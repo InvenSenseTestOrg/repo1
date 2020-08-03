@@ -5,7 +5,7 @@ hanging_threads==2.0.5
 jenkinsapi==0.3.10
 Mako==1.1.0
 mock==2.0.0
-pygithub==1.44
+pygithub==1.52
 pytest==5.2.0
 PyYAML==5.0.3
 requests==2.23.0
