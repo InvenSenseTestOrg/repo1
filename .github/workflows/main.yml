@@ -1,0 +1,22 @@
+name: Comment on New Issue
+
+on: push
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Get CODEOWNERS
+      id: get-codeowners
+      run: |
+        sed -ne "s/^\* \(.*\)/CODEOWNERS=\1/p;" newfile > "$GITHUB_OUTPUT"
+        echo $GITHUB_OUTPUT
+
+    - uses: actions/github-script@v6
+      with:
+        script: |
+          const commentBody = "Thank you for opening this issue! We will look into it shortly.<br>Notifying ${{ steps.get-codeowners.outputs.CODEOWNERS }}";
+          console.log(commentBody)
