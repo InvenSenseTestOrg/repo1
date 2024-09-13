@@ -1,0 +1,24 @@
+name: Comment on New Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Comment on the new issue
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.BOT_ACCOUNT_PAT }}
+        script: |
+          const issueNumber = context.issue.number;
+          const commentBody = "Thank you for opening this issue! We will look into it shortly. @InvenSenseTestOrg/repo1-read";
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: issueNumber,
+            body: commentBody
+          });
