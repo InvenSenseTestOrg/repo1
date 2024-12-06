@@ -1,5 +1,5 @@
 coverage==4.5.3
-flake8==3.7.1
+flake8==3.9.2
 pylint==2.4.4
 hanging_threads==2.0.5
 jenkinsapi==0.3.10
